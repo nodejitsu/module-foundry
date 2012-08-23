@@ -14,5 +14,15 @@
     "url": "git://github.com/nodejitsu/module-foundry.git"
   },
   "author": "",
-  "license": "BSD"
+  "license": "BSD",
+  "dependencies": {
+    "ncp": "~0.2.6",
+    "tar": "~0.1.13",
+    "uuid-v4": "0.0.2",
+    "chownr": "0.0.1",
+    "morestreams": "~0.1.1",
+    "async": "~0.1.22",
+    "fstream": "~0.1.18",
+    "uid-number": "0.0.3"
+  }
 }

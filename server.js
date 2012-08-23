@@ -4,6 +4,7 @@
 //
 // BuildBot for Node
 //
+// sudo PORT=${PORT:=80} node server.js
 // tar -cz -C example/http-app/ . | curl -o out.tgz -H content-type:application/tar+gzip --data-binary @- localhost:${PORT:=80} -v
 //
 // TODO
@@ -24,6 +25,7 @@ var fs = require('fs');
 var spawn = require('child_process').spawn;
 var fstream = require("fstream");
 var BufferedStream = require('morestreams').BufferedStream;
+var uidNumber = require('uid-number');
 
 var platform = require('os').platform();
 var arch = require('os').arch();
@@ -91,7 +93,10 @@ BuildBot.prototype.build = function build(description, callback/* err, tar-strea
         return;
       }
       var targetTarball = dir + '/package.tgz';
-      chownr(dir, -2, -2, runNPM);
+      //
+      // Magic "nobody" user values
+      // 
+      chownr(dir, this.uid || -2 , this.gid || -2, runNPM);
       function runNPM(err) {
         console.log('CHOWNED', err)
         if (err) {
@@ -121,6 +126,12 @@ BuildBot.prototype.build = function build(description, callback/* err, tar-strea
                         cwd: dir + '/package'
                       }
         );
+        builder.stderr.on('data', function () {
+          console.log(arguments[0]+'')
+        });
+        builder.stdout.on('data', function () {
+          console.log(arguments[0]+'')
+        });
         builder.on('exit', function (code) {
           if (code !== 0) {
             callback(new Error('npm exited with code ' + code));
@@ -142,11 +153,12 @@ BuildBot.prototype.build = function build(description, callback/* err, tar-strea
 //
 // Example server, should be fleshed out
 //
+var bot = new BuildBot();
 var server = require('http').createServer(function (req, res) {
   var gunzip = zlib.createGunzip();
   var buff = new BufferedStream();
   req.pipe(gunzip).pipe(buff);
-  new BuildBot().build({
+  bot.build({
     repository: { type: 'tar-stream', stream: buff }
   }, function (err, tgz) {
     if (err) {
@@ -160,4 +172,9 @@ var server = require('http').createServer(function (req, res) {
     tgz.pipe(res);
   });
 });
-server.listen(process.env.PORT || 80);
+uidNumber('nobody', 'nobody', function (err, uid, gid) {
+  if (err) throw err;
+  bot.uid = uid;
+  bot.gid = gid;
+  server.listen(process.env.PORT || 80);
+})
