@@ -25,6 +25,8 @@
     "async": "~0.1.22",
     "fstream": "~0.1.18",
     "uid-number": "0.0.3",
-    "understudy": "~0.1.0"
+    "understudy": "~0.1.0",
+    "tmp": "0.0.13",
+    "utile": "~0.1.3"
   }
 }
