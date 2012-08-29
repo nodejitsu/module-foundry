@@ -1,0 +1,11 @@
+{
+   "name": "dev-dependencies-example",
+   "version": "0.0.0",
+   "private": true,
+   "dependencies": {
+      "bcrypt": "*"
+   },
+   "devDependencies": {
+      "mocha": "*"
+   }
+}

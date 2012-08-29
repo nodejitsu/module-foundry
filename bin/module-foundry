@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+//
+// Module Foundary
+//
+// BuildBot for Node
+//
+// sudo PORT=${PORT:=80} node module-foundry
+// tar -cz -C example/http-app/ . | curl -o out.tgz -H content-type:application/tar+gzip --data-binary @- localhost:${PORT:=80} -v
+//
+// TODO
+// - semvers
+// - plugin probes
+// - module cache
+// - more error checks
+//
+var flatiron = require('flatiron');
+var Understudy = require('understudy').Understudy;
+
+
+var app = Understudy.call(flatiron.app);
+app.config.argv().file('config.json').env().defaults({
+   plugins: [ './servers' ],
+   directories: {
+      tmp: __dirname + '/../tmp'
+   },
+   user: 'nobody',
+   
+});
+//
+// Monitor and Repository support
+//
+app.use(require('../lib/plugins/pluggable'));
+app.use(require('../lib/plugins/servers'));
+app.use(require('../lib/plugins/http'));
+require('../lib/routes')(app, app.config.get('routes'));
+app.init();
