@@ -59,3 +59,5 @@ This archive should include a package/ prefix for all the source like `npm pack`
   ```  
 
 * **Notes:**
+
+The build will be placed in a build/ prefix, inside of the build/ prefix a couple of log related files will be present, the actual module will be placed in build/module/
