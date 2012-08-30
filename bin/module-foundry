@@ -23,8 +23,7 @@ app.config.argv().file('config.json').env().defaults({
    directories: {
       tmp: __dirname + '/../tmp'
    },
-   user: 'nobody',
-   
+   user: 'nobody'
 });
 //
 // Monitor and Repository support
