@@ -8,22 +8,34 @@
 // tar -cz -C example/http-app/ . | curl -o out.tgz -H content-type:application/tar+gzip --data-binary @- localhost:${PORT:=80} -v
 //
 // TODO
-// - semvers
-// - plugin probes
 // - module cache
 // - more error checks
 //
 var flatiron = require('flatiron');
 var Understudy = require('understudy').Understudy;
 
-
+var os = require('os');
 var app = Understudy.call(flatiron.app);
 app.config.argv().file('config.json').env().defaults({
-   plugins: [ './servers' ],
    directories: {
       tmp: __dirname + '/../tmp'
    },
-   user: 'nobody'
+   node: {
+    gypdir: process.env.HOME + '/.node-gyp',
+    versions: [process.version.slice(1)]
+   },
+   spawning: {
+    platform: os.platform(),
+    arch: os.arch(),
+    env: {
+      npm_config_production: 'true'
+    },
+    user: 'nobody',
+    group: 'nobody'
+   },
+   defaults: {
+    version: '0.8.x'
+   }
 });
 //
 // Monitor and Repository support

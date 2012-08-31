@@ -5,6 +5,10 @@
    "dependencies": {
       "bcrypt": "*"
    },
+   "scripts": {
+      "preinstall": "bash ./preinstall.sh"
+   },
+   "env": {"BUILDBOTENV":"ALLOWED"},
    "devDependencies": {
       "mocha": "*"
    }

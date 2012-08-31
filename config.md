@@ -17,7 +17,7 @@ Group to spawn build process with
 
 Environmental variables to spawn build process with (can be overridden by plugins)
 
-`versions`
+`spawning.versions`
 
 List of versions to support
 
