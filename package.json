@@ -16,7 +16,7 @@
   "author": "",
   "license": "BSD",
   "dependencies": {
-    "repositron": "git+ssh://git@github.com:nodejitsu/node-install-repo.git#repositron",
+    "checkout": "0.0.0",
     "ncp": "~0.2.6",
     "tar": "~0.1.13",
     "uuid-v4": "0.0.2",
