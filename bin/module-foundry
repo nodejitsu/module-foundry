@@ -13,10 +13,12 @@
 //
 var flatiron = require('flatiron');
 var Understudy = require('understudy').Understudy;
+var argv = require('optimist').argv;
+var configFile = argv.c ? require('path').join(__dirname, '..', 'config',  argv.c) : 'config.json';
 
 var os = require('os');
 var app = Understudy.call(flatiron.app);
-app.config.argv().file('config.json').env().defaults({
+app.config.argv().file(configFile).env().defaults({
    directories: {
       tmp: __dirname + '/../tmp'
    },

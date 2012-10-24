@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+var http = require('http'),
+    fs = require('fs'),
+    path = require('path'),
+
+    argv = require('optimist').argv;
+
+if (!argv.c) {
+  console.log('usage: bin/localfiles -c /path/to/config.json');
+  process.exit(1);
+}
+
+var config = require(path.join(process.env.PWD, argv.c.replace('.json', '')));
+var basePath = config.localfiles.path;
+http.createServer(function(req, res) {
+  var file = path.join(basePath, req.url.replace('/', ''));
+  console.log('file', file);
+  fs.stat(file, function(err) {
+    if (err) {
+      res.writeHead(404);
+      return res.end('not found');
+    }
+
+    res.writeHead(200, {
+      'Content-type' : 'application/tar+gzip'
+    });
+    fs.createReadStream(file).pipe(res);
+  });
+}).listen(config.localfiles.port);
+
