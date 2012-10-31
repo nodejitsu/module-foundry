@@ -34,7 +34,9 @@ app.config.argv().file('config.json').env().defaults({
     group: 'nobody'
    },
    defaults: {
-    version: '0.8.x'
+     build: {
+       version: '0.8.x'
+     }
    }
 });
 //
