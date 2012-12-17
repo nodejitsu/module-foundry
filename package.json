@@ -2,7 +2,7 @@
   "name": "module-foundry",
   "version": "0.1.0",
   "description": "build bot for npm",
-  "main": "server.js",
+  "main": "lib/index.js",
   "publishConfig": {
     "registry": "http://reg.njitsu.net:5984"
   },
