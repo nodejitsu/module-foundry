@@ -25,6 +25,7 @@
     "merge-recursive": "0.0.3",
     "morestreams": "~0.1.1",
     "ncp": "~0.2.6",
+    "pkgcloud": "~0.6.0",
     "tar": "~0.1.13",
     "tmp": "0.0.13",
     "semver": "~1.0.14",
