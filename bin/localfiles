@@ -3,7 +3,6 @@
 var http = require('http'),
     fs = require('fs'),
     path = require('path'),
-
     argv = require('optimist').argv;
 
 if (!argv.c) {
@@ -11,12 +10,13 @@ if (!argv.c) {
   process.exit(1);
 }
 
-var config = require(path.join(process.env.PWD, argv.c.replace('.json', '')));
-var basePath = config.localfiles.path;
-http.createServer(function(req, res) {
+var config = require(path.join(process.env.PWD, argv.c.replace('.json', ''))),
+    basePath = config.localfiles.path;
+
+http.createServer(function (req, res) {
   var file = path.join(basePath, req.url.replace('/', ''));
   console.log('file', file);
-  fs.stat(file, function(err) {
+  fs.stat(file, function (err) {
     if (err) {
       res.writeHead(404);
       return res.end('not found');
@@ -25,6 +25,7 @@ http.createServer(function(req, res) {
     res.writeHead(200, {
       'Content-type' : 'application/tar+gzip'
     });
+    
     fs.createReadStream(file).pipe(res);
   });
 }).listen(config.localfiles.port);
