@@ -20,10 +20,8 @@
   },
   "rackspace": {
     "cloudfiles": {
-      "auth": {
-        "username": "x",
-        "apiKey": "x"
-      }
+      "username": "x",
+      "apiKey": "x"
     },
     "appsContainer": "nodejitsu-apps",
     "keysContainer": "ssh-keys",
