@@ -16,7 +16,7 @@ var argv = require('optimist').argv,
     foundry = require('../lib');
 
 foundry.start({
-  configFile: argv.c 
-    ? require('path').join(__dirname, '..', 'config',  argv.c) 
-    : 'config.json'
+  configFile: argv.c
+    || argv.config
+    || require('path').join(__dirname, '..', 'config',  argv.c)
 });
