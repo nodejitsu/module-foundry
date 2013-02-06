@@ -13,19 +13,18 @@
     "type": "git",
     "url": "git://github.com/nodejitsu/module-foundry.git"
   },
-  "author": "",
-  "license": "BSD",
+  "author": "Nodejitsu Inc <info@nodejitsu.com>",
   "dependencies": {
     "async": "~0.1.22",
     "director": "~1.1.4",
     "flatiron": "~0.2.8",
     "merge-recursive": "0.0.3",
+    "module-smith": "~0.1.1",
     "morestreams": "~0.1.1",
+    "optimist": "~0.3.5",
     "pkgcloud": "~0.6.0",
     "tmp": "0.0.13",
     "semver": "~1.0.14",
-    "understudy": "~1.1.0",
-    "module-smith": "~0.1.1",
-    "optimist": "~0.3.5"
+    "understudy": "~1.1.0"
   }
 }
