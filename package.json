@@ -1,6 +1,6 @@
 {
   "name": "module-foundry",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "build bot for npm",
   "main": "lib/index.js",
   "publishConfig": {
