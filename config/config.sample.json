@@ -4,7 +4,7 @@
     "address":"0.0.0.0"
   },
   "versions": ["0.8.8","0.8.6","0.8.7","0.6.20","0.6.19"],
-  "unauthorized": {"ok": true},
+  "unauthorized": { "ok": true },
   "plugins": {
     "cloudfiles": {}
   },
@@ -14,7 +14,7 @@
       "env": {
         "npm_config_production": "true",
         "NODE_ENV": "production",
-        "npm_config_registry":"http://nj-npm.irisnpm.com"
+        "npm_config_registry": "http://nj-npm.irisnpm.com"
       }
     }
   },
@@ -22,15 +22,6 @@
     "cloudfiles": {
       "username": "x",
       "apiKey": "x"
-    },
-    "appsContainer": "nodejitsu-apps",
-    "keysContainer": "ssh-keys",
-    "haibuContainer": "haibu",
-    "balanceboardContainer": "balanceboard",
-    "conservatoryContainer": "conservatory",
-    "orchestrionContainer": "orchestrion",
-    "nodeFilesContainer": "node-files",
-    "nodejitsuContainer": "nodejitsu",
-    "snapshotsContainer": "snapshots"
+    }
   }
 }

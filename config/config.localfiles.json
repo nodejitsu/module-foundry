@@ -4,7 +4,7 @@
     "address":"0.0.0.0"
   },
   "versions": ["0.8.8","0.8.6","0.8.7","0.6.20","0.6.19"],
-  "unauthorized": {"ok": true},
+  "unauthorized": { "ok": true },
   "plugins": {
     "localfiles": {}
   },
