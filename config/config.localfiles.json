@@ -1,21 +1,19 @@
 {
   "http": {
     "port": 1337,
-    "address":"0.0.0.0"
+    "address": "0.0.0.0"
   },
-  "versions": ["0.8.8","0.8.6","0.8.7","0.6.20","0.6.19"],
+  "versions": ["0.8.8", "0.8.6", "0.8.7", "0.6.20", "0.6.19"],
   "unauthorized": { "ok": true },
   "plugins": {
     "localfiles": {}
   },
   "directories": { "tmp": "/root/tmp" },
   "defaults": {
-    "package": {
-      "env": {
-        "npm_config_production": "true",
-        "NODE_ENV": "production",
-        "npm_config_registry":"http://nj-npm.irisnpm.com"
-      }
+    "env": {
+      "npm_config_production": "true",
+      "NODE_ENV": "production",
+      "npm_config_registry":"http://nj-npm.irisnpm.com"
     }
   },
   "localfiles": {
