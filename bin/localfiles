@@ -5,7 +5,7 @@ var http = require('http'),
     path = require('path'),
     argv = require('optimist').argv;
 
-if (!argv.c) {
+if (!argv.c && !argv.config) {
   console.log('usage: bin/localfiles -c /path/to/config.json');
   process.exit(1);
 }
