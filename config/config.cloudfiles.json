@@ -5,12 +5,21 @@
   },
   "versions": ["0.8.25", "0.8.6", "0.8.7", "0.6.20", "0.6.19"],
   "unauthorized": { "ok": true },
+  "plugins": {
+    "cloudfiles": {}
+  },
   "directories": { "tmp": "/tmp" },
   "defaults": {
     "env": {
       "npm_config_production": "true",
       "NODE_ENV": "production",
       "npm_config_registry": "http://registry.npmjs.org"
+    }
+  },
+  "rackspace": {
+    "cloudfiles": {
+      "username": "x",
+      "apiKey": "x"
     }
   }
 }
