@@ -12,9 +12,28 @@
 // - module cache
 // - more error checks
 //
+var foundry = require('../lib');
 
-var argv = require('optimist').argv,
-    foundry = require('../lib');
+var optimist = require('optimist')
+  .usage('usage: module-foundry -c /path/to/config.json')
+  .options({
+    config: {
+      description: 'Path to the config file to use',
+      alias: 'c',
+      string: true,
+      demand: true
+    },
+    help: {
+      description: 'Display this message',
+      alias: 'h',
+      boolean: true
+    }
+  });
+
+var argv = optimist.argv;
+if (argv.help) {
+  return optimist.showHelp();
+}
 
 foundry.start({
   configFile: argv.c
