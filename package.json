@@ -13,6 +13,10 @@
     "type": "git",
     "url": "git://github.com/nodejitsu/module-foundry.git"
   },
+  "bin": {
+    "foundry-build": "bin/foundry-build",
+    "module-foundry": "bin/module-foundry"
+  },
   "author": "Nodejitsu Inc <info@nodejitsu.com>",
   "dependencies": {
     "async": "~0.1.22",

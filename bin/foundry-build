@@ -1,0 +1,87 @@
+#!/usr/bin/env node
+
+var fs = require('fs'),
+    path = require('path'),
+    request = require('request');
+
+var optimist = require('optimist')
+  .usage('usage: foundry-build -p /path/to/package.json -u http://module-foundry:port')
+  .options({
+    package: {
+      description: 'Path to the package.json to build',
+      alias: 'p',
+      string: true,
+      demand: true
+    },
+    url: {
+      description: 'URL to the remote module-foundry server',
+      alias: 'u',
+      string: true,
+      demand: true
+    },
+    file: {
+      description: 'Path to local tarball to receive',
+      alias: 'f',
+      string: true
+    },
+    command: {
+      description: 'npm command to run [build, install]',
+      alias: 'c',
+      string: true,
+      default: 'build'
+    },
+    help: {
+      description: 'Display this message',
+      alias: 'h',
+      boolean: true
+    }
+  });
+
+var argv = optimist.argv;
+if (argv.help) {
+  return optimist.showHelp();
+}
+else if (['build', 'install'].indexOf(argv.command) === -1) {
+  console.log('Error: --command must be build or install');
+  return optimist.showHelp();
+}
+
+var url = argv.url.replace(/\/$/, '') + '/build',
+    query = { 'npm-command': argv.command },
+    options,
+    pkg,
+    res;
+
+try {
+  argv.package = argv.p = path.resolve(argv.package);
+  pkg = require(argv.package);
+}
+catch (ex) {
+  return console.error('Error parsing ' + argv.package + ': ' + ex.message);
+};
+
+if (argv.file) {
+  query.stream = true;
+}
+
+console.log('Requesting: ' + url);
+options = {
+  method: 'POST',
+  url: url,
+  qs: query,
+  headers: {
+    'x-package-json': JSON.stringify(pkg)
+  }
+};
+
+if (argv.file) {
+  console.log('Streaming output to ' + argv.file);
+  request(options).pipe(fs.createWriteStream(argv.file));
+}
+else {
+  request(options, function (err, res, body) {
+    return err
+      ? console.error('Error building module: ' + err.message)
+      : console.log('Build completed: ' + body);
+  });
+}
