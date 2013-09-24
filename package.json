@@ -16,7 +16,7 @@
   "author": "Nodejitsu Inc <info@nodejitsu.com>",
   "dependencies": {
     "async": "~0.1.22",
-    "director": "~1.1.4",
+    "director": "~1.2.0",
     "flatiron": "~0.2.8",
     "merge-recursive": "0.0.3",
     "module-smith": "~0.1.3",
