@@ -1,9 +1,9 @@
 {
   "http": {
-    "port": 1337,
-    "address": "0.0.0.0"
+    "address": "localhost",
+    "port": 1337
   },
-  "versions": ["0.8.8", "0.8.6", "0.8.7", "0.6.20", "0.6.19"],
+  "versions": ["0.8.25", "0.8.6", "0.8.7", "0.6.20", "0.6.19"],
   "unauthorized": { "ok": true },
   "plugins": {
     "localfiles": {}
