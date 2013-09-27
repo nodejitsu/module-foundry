@@ -20,7 +20,7 @@
   "author": "Nodejitsu Inc <info@nodejitsu.com>",
   "dependencies": {
     "async": "~0.1.22",
-    "bl": "~0.4.1",
+    "buffered": "~0.0.1",
     "director": "~1.2.0",
     "flatiron": "~0.2.8",
     "merge-recursive": "0.0.3",
