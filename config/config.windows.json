@@ -11,7 +11,7 @@
   },
   "defaults": {
     "expand": {
-      "path": ";c:\\mozilla-build\\python;c:\\Program Files (x86)\\Git\\cmd;.\\node_modules\\.bin;c:\\mozilla-build\\msys\\bin;%~dp0;"
+      "Path": ";c:\\mozilla-build\\python;c:\\Program Files (x86)\\Git\\cmd;.\\node_modules\\.bin;c:\\mozilla-build\\msys\\bin;%~dp0;"
     },
     "env": {
       "npm_config_production": "true",
