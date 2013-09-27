@@ -1,0 +1,22 @@
+{
+  "http": {
+    "address": "localhost",
+    "port": 1337
+  },
+  "versions": ["0.8.25", "0.8.6", "0.8.7", "0.6.20", "0.6.19"],
+  "unauthorized": { "ok": true },
+  "directories": {
+    "node": "/node",
+    "tmp": "/tmp"
+  },
+  "defaults": {
+    "expand": {
+      "path": ";c:\\mozilla-build\\python;c:\\Program Files (x86)\\Git\\cmd;.\\node_modules\\.bin;c:\\mozilla-build\\msys\\bin;%~dp0;"
+    },
+    "env": {
+      "npm_config_production": "true",
+      "NODE_ENV": "production",
+      "npm_config_registry": "http://registry.npmjs.org"
+    }
+  }
+}
