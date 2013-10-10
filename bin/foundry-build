@@ -8,10 +8,20 @@ var optimist = require('optimist')
   .usage('usage: foundry-build -p /path/to/package.json -u http://module-foundry:port')
   .options({
     package: {
-      description: 'Path to the package.json to build',
+      description: 'Path to the package.json to build.',
       alias: 'p',
+      string: true
+    },
+    npm: {
+      description: 'npm package to build (e.g. "pg@2.7.0").',
+      alias: 'n',
+      string: true
+    },
+    engine: {
+      description: 'Version of node.js to request build against.',
+      alias: 'e',
       string: true,
-      demand: true
+      default: '0.8.x'
     },
     url: {
       description: 'URL to the remote module-foundry server',
@@ -49,21 +59,41 @@ else if (['build', 'install'].indexOf(argv.command) === -1) {
 var url = argv.url.replace(/\/$/, '') + '/build',
     query = { 'npm-command': argv.command },
     options,
+    parts,
     pkg,
     res;
 
-try {
-  argv.package = argv.p = path.resolve(argv.package);
-  pkg = require(argv.package);
+if (argv.package) {
+  try {
+    argv.package = argv.p = path.resolve(argv.package);
+    pkg = require(argv.package);
+  }
+  catch (ex) {
+    return console.error('Error parsing ' + argv.package + ': ' + ex.message);
+  };
 }
-catch (ex) {
-  return console.error('Error parsing ' + argv.package + ': ' + ex.message);
-};
+else if (argv.npm) {
+  parts = argv.npm.split('@');
+  argv.file = parts.join('-') + '.tgz';
+  pkg = {
+    engines: { node: argv.engine },
+    repository: {
+      type: 'npm',
+      package: parts[0],
+      version: parts[1]
+    }
+  };
+}
+else {
+  console.log('Error: -p or -n are required.');
+  return optimist.showHelp();
+}
 
 if (argv.file) {
   query.stream = true;
 }
 
+console.dir(pkg);
 console.log('Requesting: ' + url);
 options = {
   method: 'POST',

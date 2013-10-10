@@ -51,6 +51,14 @@ Then all we need to do pass this to `foundry-build`:
   Streaming output to bcrypt-0.7.7.tgz
 ```
 
+For `npm` specific builds you can also pass this information directly into `foundry-build`. _The below is equivalent to the above:_
+
+```
+  $ foundry-build --url http://localhost:1337 --npm "bcrypt@0.7.7"
+  Requesting: http://localhost:1337/build
+  Streaming output to bcrypt-0.7.7.tgz
+```
+
 Full help for `foundry-build` can be found by using `--help`:
 
 ```
