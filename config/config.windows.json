@@ -9,6 +9,49 @@
     "node": "/node",
     "tmp": "/tmp"
   },
+  "arch": {
+    "x86": {
+      "expand": {
+        "Path": ";C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework\\v3.5;;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\Tools;;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Bin;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Bin\\VCPackages;;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin\\NETFX 4.0 Tools;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin;;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Microsoft Windows Performance Toolkit\\"
+      },
+      "env": {
+        "CommandPromptType": "Cross",
+        "LIB": "C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Lib;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Lib;C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework\\v3.5;",
+        "LIBPATH": "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework\\v3.5;;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Lib;",
+        "TARGET_CPU": "x86"
+      }
+    },
+    "x64": {
+      "expand": {
+        "Path": ";C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework64\\v3.5;C:\\Windows\\Microsoft.NET\\Framework\\v3.5;;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\Tools;;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Bin\\amd64;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Bin\\VCPackages;;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin\\NETFX 4.0 Tools\\x64;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin\\x64;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin;;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Microsoft Windows Performance Toolkit\\"
+      },
+      "env": {
+        "CommandPromptType": "Native",
+        "LIB": "C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Lib\\amd64;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Lib\\X64;",
+        "LIBPATH": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework64\\v3.5;C:\\Windows\\Microsoft.NET\\Framework\\v3.5;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Lib\\amd64;",
+        "TARGET_CPU": "x64"
+      }
+    }
+  },
+  "platform": {
+    "windows": {
+      "env": {
+        "APPVER": "6.1",
+        "CL": "/AI C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319",
+        "Configuration": "Release",
+        "INCLUDE": "C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\INCLUDE;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\INCLUDE;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\INCLUDE\\gl;",
+        "FrameworkVersion": "v4.0.30319",
+        "ORIGINALPATH": "C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Microsoft Windows Performance Toolkit\\;c:\\mozilla-build\\python;c:\\Program Files (x86)\\Git\\cmd;.\\node_modules\\.bin;c:\\mozilla-build\\msys\\bin;%~dp0;",
+        "PlatformToolset": "Windows7.1SDK",
+        "sdkdir": "C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\",
+        "TARGET_PLATFORM": "WIN7",
+        "ToolsVersion": "4.0",
+        "WindowsSDKDir": "C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\",
+        "WindowsSDKVersionOverride": "v7.1"
+
+      }
+    }
+  },
   "defaults": {
     "expand": {
       "Path": ";c:\\mozilla-build\\python;c:\\Program Files (x86)\\Git\\cmd;.\\node_modules\\.bin;c:\\mozilla-build\\msys\\bin;%~dp0;"
