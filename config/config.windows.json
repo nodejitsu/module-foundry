@@ -48,7 +48,6 @@
         "ToolsVersion": "4.0",
         "WindowsSDKDir": "C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\",
         "WindowsSDKVersionOverride": "v7.1"
-
       }
     }
   },
