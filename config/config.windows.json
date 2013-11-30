@@ -12,18 +12,18 @@
   "arch": {
     "x86": {
       "expand": {
-        "Path": ";C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework\\v3.5;;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\Tools;;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Bin;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Bin\\VCPackages;;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin\\NETFX 4.0 Tools;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin;;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Microsoft Windows Performance Toolkit\\"
+        "Path": ";C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework\\v3.5;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\Tools;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Bin;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Bin\\VCPackages;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin\\NETFX 4.0 Tools;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Microsoft Windows Performance Toolkit\\"
       },
       "env": {
         "CommandPromptType": "Cross",
         "LIB": "C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Lib;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Lib;C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework\\v3.5;",
-        "LIBPATH": "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework\\v3.5;;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Lib;",
+        "LIBPATH": "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework\\v3.5;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Lib;",
         "TARGET_CPU": "x86"
       }
     },
     "x64": {
       "expand": {
-        "Path": ";C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework64\\v3.5;C:\\Windows\\Microsoft.NET\\Framework\\v3.5;;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\Tools;;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Bin\\amd64;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Bin\\VCPackages;;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin\\NETFX 4.0 Tools\\x64;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin\\x64;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin;;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Microsoft Windows Performance Toolkit\\"
+        "Path": ";C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319;C:\\Windows\\Microsoft.NET\\Framework64\\v3.5;C:\\Windows\\Microsoft.NET\\Framework\\v3.5;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\Tools;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Bin\\amd64;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\VC\\Bin\\VCPackages;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin\\NETFX 4.0 Tools\\x64;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin\\x64;C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Microsoft Windows Performance Toolkit\\"
       },
       "env": {
         "CommandPromptType": "Native",
