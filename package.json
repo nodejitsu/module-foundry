@@ -19,18 +19,18 @@
   },
   "author": "Nodejitsu Inc <info@nodejitsu.com>",
   "dependencies": {
-    "async": "~0.1.22",
+    "async": "~0.2.9",
     "buffered": "~0.0.1",
     "director": "~1.2.0",
-    "flatiron": "~0.2.8",
+    "flatiron": "~0.3.8",
     "merge-recursive": "0.0.3",
     "module-smith": "~0.1.3",
-    "optimist": "~0.3.5",
-    "pkgcloud": "~0.6.0",
+    "optimist": "~0.6.0",
+    "pkgcloud": "~0.8.14",
     "rimraf": "2.2.2",
     "request": "2.27.0",
-    "semver": "~1.0.14",
-    "tmp": "0.0.13",
+    "semver": "~2.2.21",
+    "tmp": "0.0.22",
     "understudy": "~1.1.0"
   }
 }
