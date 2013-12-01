@@ -2,12 +2,27 @@
 
 var http = require('http'),
     fs = require('fs'),
-    path = require('path'),
-    argv = require('optimist').argv;
+    path = require('path');
 
-if (!argv.c) {
-  console.log('usage: bin/localfiles -c /path/to/config.json');
-  process.exit(1);
+var optimist = require('optimist')
+  .usage('usage: localfiles -c /path/to/config.json')
+  .options({
+    config: {
+      description: 'Path to the config file to use',
+      alias: 'c',
+      string: true,
+      demand: true
+    },
+    help: {
+      description: 'Display this message',
+      alias: 'h',
+      boolean: true
+    }
+  });
+
+var argv = optimist.argv;
+if (argv.help) {
+  return optimist.showHelp();
 }
 
 var config = require(path.join(process.env.PWD, argv.c.replace('.json', ''))),
