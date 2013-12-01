@@ -93,7 +93,6 @@ if (argv.file) {
   query.stream = true;
 }
 
-console.dir(pkg);
 console.log('Requesting: ' + url);
 options = {
   method: 'POST',
@@ -109,9 +108,19 @@ if (argv.file) {
   request(options).pipe(fs.createWriteStream(argv.file));
 }
 else {
-  request(options, function (err, res, body) {
-    return err
-      ? console.error('Error building module: ' + err.message)
-      : console.log('Build completed: ' + body);
-  });
+  request(options)
+    .on('response', function (res) {
+      console.log('HTTP status: ' + res.statusCode);
+    })
+    .on('error', function (err) {
+      console.dir(err);
+      console.dir(err.stack.split('\n'));
+      console.error('Error building module: ' + err.message);
+      console.log('')
+    })
+    .on('end', function () {
+      console.log('\nBuild completed!');
+      console.log('')
+    })
+    .pipe(process.stdout)
 }
