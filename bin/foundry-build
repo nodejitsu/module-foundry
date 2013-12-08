@@ -23,6 +23,11 @@ var optimist = require('optimist')
       string: true,
       default: '0.8.x'
     },
+    input: {
+      description: 'Expects streaming input from stdin',
+      alias: 'i',
+      boolean: true
+    },
     url: {
       description: 'URL to the remote module-foundry server',
       alias: 'u',
@@ -59,6 +64,7 @@ else if (['build', 'install'].indexOf(argv.command) === -1) {
 var url = argv.url.replace(/\/$/, '') + '/build',
     query = { 'npm-command': argv.command },
     options,
+    build,
     parts,
     pkg,
     res;
@@ -85,8 +91,12 @@ else if (argv.npm) {
   };
 }
 else {
-  console.log('Error: -p or -n are required.');
+  console.log('Error: -p, -n, or -i are required.');
   return optimist.showHelp();
+}
+
+if (argv.input) {
+  delete pkg.repository;
 }
 
 if (argv.file) {
@@ -103,12 +113,13 @@ options = {
   }
 };
 
+build = request(options);
 if (argv.file) {
   console.log('Streaming output to ' + argv.file);
-  request(options).pipe(fs.createWriteStream(argv.file));
+  build.pipe(fs.createWriteStream(argv.file));
 }
 else {
-  request(options)
+  build
     .on('response', function (res) {
       console.log('HTTP status: ' + res.statusCode);
     })
@@ -123,4 +134,13 @@ else {
       console.log('')
     })
     .pipe(process.stdout)
+}
+
+//
+// If we should expect data from stdin then
+// open to expect it.
+//
+if (argv.input) {
+  process.stdin.resume();
+  process.stdin.pipe(build);
 }
