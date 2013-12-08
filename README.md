@@ -1,6 +1,6 @@
 # module-foundry
 
-A web service for building node.js modules
+A web service for building node.js modules that runs on Linux, SmartOS and Windows.
 
 ## Usage
 
@@ -75,5 +75,5 @@ Full help for `foundry-build` can be found by using `--help`:
   Missing required arguments: package, url
 ```
 
-#### Copyright (C) 2012-2013 Nodejitsu Inc.
-#### License: PRIVATE
+#### Copyright (C) 2012 Nodejitsu Inc.
+#### License: MIX
