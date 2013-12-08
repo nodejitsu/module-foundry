@@ -1,6 +1,6 @@
 {
   "name": "module-foundry",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "A web service for building node.js modules that runs on Linux, SmartOS and Windows.",
   "main": "lib/index.js",
   "scripts": {
