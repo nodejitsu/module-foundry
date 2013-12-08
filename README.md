@@ -1,5 +1,7 @@
 # module-foundry
 
+![](https://i.cloudup.com/mYC6chbBKF-3000x3000.png)
+
 A web service for building node.js modules that runs on Linux, SmartOS and Windows.
 
 ## Usage
@@ -66,14 +68,34 @@ Full help for `foundry-build` can be found by using `--help`:
   usage: foundry-build -p /path/to/package.json -u http://module-foundry:port
 
   Options:
-    --package, -p  Path to the package.json to build        [string]  [required]
-    --url, -u      URL to the remote module-foundry server  [string]  [required]
-    --file, -f     Path to local tarball to receive         [string]
-    --command, -c  npm command to run                       [string]  [default: "build"]
-    --help, -h     Display this message                     [boolean]
+    --package, -p  Path to the package.json to build.
+    --npm, -n      npm package to build (e.g. "pg@2.7.0").
+    --engine, -e   Version of node.js to request build against.  [default: "0.8.x"]
+    --input, -i    Expects streaming input from stdin
+    --url, -u      URL to the remote module-foundry server       [required]
+    --file, -f     Path to local tarball to receive
+    --command, -c  npm command to run [build, install]           [default: "build"]
+    --help, -h     Display this message
 
   Missing required arguments: package, url
 ```
 
+### Streaming tarball builds
+
+It is possible to stream tarball builds to `module-foundry` using `npm pack`. Using `npm pack` ensures that all bundledDependencies are included in the tarball you send to `module-foundry`.
+
+**Packaging your application or module**
+``` sh
+  $ npm pack my-app/
+  # ...
+  my-app-1.0.0.tgz
+  npm info ok
+```
+
+**Sending your tarball to module-foundry**
+``` sh
+  cat my-app-1.0.0.tgz | foundry-build -u 'http://localhost:1337' -p my-app/package.json -f my-app-built.tgz -i
+```
+
 #### Copyright (C) 2012 Nodejitsu Inc.
-#### License: MIX
+#### License: MIT

@@ -49,7 +49,7 @@ Groups of properties related to authorization
 
 What the authorization header from http requests must match exactly.
 
-### Http
+### HTTP
 
 `http`
 `http.port`
@@ -61,7 +61,7 @@ An array of objects telling wherere the remote connections are allowed to come f
 {ip:,port:}
 ```
 
-### Https
+### HTTPS
 
 `https`
 `https.port`
