@@ -5,15 +5,16 @@
 A web service for building node.js modules that runs on Linux, SmartOS and Windows.
 
 * [Usage](#usage)
-  * [Running a module-foundry server](#running-server)
-  * [Requesting a build from module-foundry](#requesting-build)
-  * [Streaming tarball builds](#streaming-tarballs)
+  * [Running a module-foundry server](#running-a-module-foundry-server)
+  * [Requesting a build from module-foundry](#requesting-a-build-from-module-foundry)
+  * [Streaming tarball builds](#streaming-tarball-builds)
 * [Supporting native modules](#supporting-native-modules)
   * [Native module dependencies](#native-module-dependencies)
-* [Fine Print](#fine-print)
-  * [REST API](#rest-api)
-  * [Configuration](#configuration-available)
-  * [Probes](#probes)
+* [REST API](#rest-api)
+* [Configuration](#configuration-available)
+* [Probes](#probes)
+
+<hr>
 
 ## Usage
 
@@ -108,6 +109,8 @@ It is possible to stream tarball builds to `module-foundry` using `npm pack`. Us
   cat my-app-1.0.0.tgz | foundry-build -u 'http://localhost:1337' -p my-app/package.json -f my-app-built.tgz -i
 ```
 
+<hr>
+
 ## Supporting native modules
 
 Installing `module-foundry` is easy with [npm][npm]:
@@ -165,16 +168,9 @@ Given the more automated nature of using `apt` or `pkgsrc` these installations a
   $ ./module-foundry/scripts/$MY_PLATFORM/dependencies.sh
   $ ./module-foundry/scripts/setup-node-gyp.sh
 ```
+<hr>
 
-## Fine print
-
-So you want to see how the sausage is made? Great! There are a couple of distinct areas that you need to familiarize yourself with.
-
-* [REST API](#rest-api)
-* [Configuration](#configuration-available)
-* [Probes](#probes)
-
-### REST API
+## REST API
 
 This will run npm against a given archive.
 
@@ -238,8 +234,9 @@ This archive should include a package/ prefix for all the source like `npm pack`
 
 The build will be placed in a build/ prefix, inside of the build/ prefix a couple of log related files will be present, the actual module will be placed in build/module/
 
+<hr>
 
-### Configuration available
+## Configuration available
 
 Fine tuning your build process is important. With `module-foundry` there are a number of options available to help you change things like:
 
@@ -287,7 +284,9 @@ Here's a full list of all available configuration options.
 {ip:,port:}
 ```
 
-### Probes
+<hr>
+
+## Probes
 
 `module-foundry` uses [understudy] to provide Javascript probes to alter it's behavior.
 
