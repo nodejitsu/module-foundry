@@ -14,8 +14,6 @@ A web service for building node.js modules that runs on Linux, SmartOS and Windo
 * [Configuration](#configuration-available)
 * [Probes](#probes)
 
-<hr>
-
 ## Usage
 
 When using `module-foundry` there are two distinct scenarios:
@@ -253,11 +251,15 @@ Here's a full list of all available configuration options.
 * `spawning.group`: Group to spawn build process with
 * `spawning.env`: Environmental variables to spawn build process with (can be overridden by plugins)
 * `spawning.versions`: List of versions to support
+* `spawning.platform`: Override platform build target
+* `spawning.cpu`: Override target platform architecture (e.g. `x86` or `x64`).
 
 #### Defaults
 
 * `defaults`: Group of default options
-* `defaults.version`: The Node version to suggest when determining which version to use for the build process
+* `defaults.env`: Default environment variables to set on the running npm process.
+* `defaults.expand`: Default environment variables to _append_ to the running `module-foundry` process' environment variable value(s).
+* `defaults.build.version`: The Node version to suggest when determining which version to use for the build process
 
 #### Authorization
 
@@ -266,23 +268,30 @@ Here's a full list of all available configuration options.
 * `authorization`: Groups of properties related to authorization
 * `authorization.header`: What the authorization header from http requests must match exactly.
 
-#### HTTP
+#### Platform & Architecture
 
-* `http`:
-* `http.port`:
-* `whitelist`: An array of objects telling wherere the remote connections are allowed to come from
-```
-{ip:,port:}
-```
+**platform**
+A platform is any valid value from this set: `windows`, `linux`, `sunos`, `darwin`.
 
-#### HTTPS
+* `platform.{{platform}}.env`: Sets these environment variables on the `npm` process on the specified platform.
+* `platform.{{platform}}.expand`: Appends these environment variables to the running `module-foundry` process' environment variable value(s) on the specified platform.
 
-* `https`
-* `https.port`
-* `whitelist`: An array of objects telling wherere the remote connections are allowed to come from
-```
-{ip:,port:}
-```
+**arch**
+
+An architecture is any valid value from this set: `x86`, or `x64`.
+
+* `arch.{{arch}}.env`: Sets these environment variables on the `npm` process on the specified architecture.
+* `arch.{{arch}}.expand`: Appends these environment variables to the running `module-foundry` process' environment variable value(s) on the specified architecture.
+
+#### HTTP(S)
+
+**HTTP**
+* `http.address`: IP address to bind the HTTP server to. _(Defaults to `::1`)_
+* `http.port`: Port to listen on. _(Defaults to 80)_
+
+**HTTPS**
+* `https.address`: IP address to bind the HTTPS server to. _(Defaults to `::1`)_
+* `https.port`: Port for the HTTPS server to listen on. _(Defaults to 443)_
 
 <hr>
 

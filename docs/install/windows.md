@@ -55,8 +55,6 @@ cinst MicrosoftSecurityEssentials
 
 Note that the MozillaBuild tools also come with msys, as usable unix emulation shell with make/makefile support. Be careful of incompatibilities between gcc in msys and cl.exe from Visual Studio. Generally people assume the latter on Windows, but node modules with Makefiles may only compile with the former. **Here be dragons.**
 
-
-
 [aria2c]: http://aria2.sourceforge.net/
 [msysgit]: http://code.google.com/p/msysgit/
 [dotnet]: http://www.microsoft.com/en-us/download/details.aspx?id=17718
@@ -66,8 +64,6 @@ Note that the MozillaBuild tools also come with msys, as usable unix emulation s
 [moztools]: https://ftp.mozilla.org/pub/mozilla.org/mozilla/libraries/win32/MozillaBuildSetup-Latest.exe
 [w2003rk]: http://www.microsoft.com/en-us/download/details.aspx?id=17657
 [mssece]: http://www.microsoft.com/en-us/download/details.aspx?id=5201
-
-
 [tools]: https://www.windowsazure.com/en-us/manage/linux/other-resources/command-line-tools
 [CoRD]: http://cord.sourceforge.net/
 [RDC]: http://www.microsoft.com/mac/remote-desktop-client
