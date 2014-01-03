@@ -27,7 +27,7 @@
     "merge-recursive": "0.0.3",
     "module-smith": "~0.2.0",
     "optimist": "~0.6.0",
-    "pkgcloud": "~0.8.14",
+    "pkgcloud": "~0.6.15",
     "rimraf": "2.2.2",
     "request": "2.27.0",
     "semver": "~2.2.1",
