@@ -32,7 +32,9 @@ Given the manual nature of many MSI-based installers on Windows:
 _Got 'em? Good._ Lets move on. If you're looking for a good chocolatey one-liner:
 
 ```powershell
-@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%systemdrive%\chocolatey\bin
+@powershell -NoProfile -ExecutionPolicy unrestricted `
+  -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" `
+  && SET PATH=%PATH%;%systemdrive%\chocolatey\bin
 ```
 
 After chocolatey is installed, you can automate the installation of the next set of dependencies:
