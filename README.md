@@ -263,7 +263,7 @@ An architecture is any valid value from this set: `x86`, or `x64`.
 
 ## Probes
 
-`module-foundry` uses [understudy] to provide Javascript probes to alter it's behavior.
+`module-foundry` uses [`understudy`][understudy] to provide Javascript probes to alter it's behavior.
 
 #### HTTP Probes
 
@@ -274,7 +274,7 @@ An architecture is any valid value from this set: `x86`, or `x64`.
 
 #### Build (module-smith) Probes
 
-Building is deferred to another actor, the BuildBot, which is an instance of [module-smith][module-smith] please refer to it's probes as well.
+Building is deferred to another actor, the BuildBot, which is an instance of [`module-smith`][module-smith] please refer to it's probes as well.
 
 * `build.create (BuildBot, next)`: When you want to hook up to a new BuildBot
 
@@ -299,3 +299,5 @@ _Factory Icon by Lil Squid from The Noun Project_
 [nodejitsu]: https://nodejitsu.com
 [smartos]: http://smartos.org
 [understudy]: https://github.com/bmeck/understudy
+[checkout]: https://github.com/indexzero/node-checkout
+[module-smith]: https://github.com/nodejitsu/module-smith
