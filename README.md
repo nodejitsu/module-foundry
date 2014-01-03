@@ -290,6 +290,7 @@ These probes are emitted _in this order._
 
 <hr>
 #### Copyright (C) 2012 Nodejitsu Inc.
+#### Contributors: [Bradley Meck](https://github.com/bmeck), [Charlie Robbins](https://github.com/indexzero)
 #### License: MIT
 
 _Factory Icon by Lil Squid from The Noun Project_
