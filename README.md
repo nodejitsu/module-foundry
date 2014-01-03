@@ -23,7 +23,7 @@ When using `module-foundry` there are two distinct scenarios:
 
 ### Running a module-foundry server
 
-To start `module-foundry` simply install it globally with `npm` and then run `module-foundry` with the appropriate [config](/docs/config.md) [file](/config/config.sample.json):
+To start `module-foundry` simply install it globally with `npm` and then run `module-foundry` with the appropriate [config](#configuration-available) [file](/config/config.sample.json):
 
 ```
   npm install -g module-foundry
