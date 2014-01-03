@@ -83,11 +83,10 @@ Full help for `foundry-build` can be found by using `--help`:
     --engine, -e   Version of node.js to request build against.  [default: "0.8.x"]
     --input, -i    Expects streaming input from stdin
     --url, -u      URL to the remote module-foundry server       [required]
+    --remote, -r   Remote file location to upload to
     --file, -f     Path to local tarball to receive
     --command, -c  npm command to run [build, install]           [default: "build"]
     --help, -h     Display this message
-
-  Missing required arguments: package, url
 ```
 
 ### Streaming tarball builds
@@ -170,67 +169,28 @@ Given the more automated nature of using `apt` or `pkgsrc` these installations a
 
 ## REST API
 
-This will run npm against a given archive.
+When using `module-foundry` over HTTP(S), there is only one route:
 
-* **URL**
+```
+POST /build
+```
 
-  /build
+But this route can be used in several different ways depending on the query string and HTTP headers. This mainly stems from `module-foundry` being capable of streaming a fully-built tarball **or** real-time `npm` logs.
 
-* **Method:**
+### HTTP Headers
 
-  `POST`
+* `x-package-json`: Partial JSON stringified `package.json`. Only repository is required, but a full `package.json` is recommended.
 
-*  **URL Params**
+### Query string options
 
-   **Optional:**
+* `npm-command`: Valid npm command to run when building the module. Valid values are `install` and `build`. If non-valid values are supplied then the default `install` is used.
+* `stream`: If set to `true`, then the fully built tarball is streamed back to the HTTP(S) request **instead** of `npm` build logs. _(Defaults to false)_
+* `webhook`: Remote HTTP(S) location to `POST` the fully built tarball to. _(Defaults to null)_
+* `cpu`: Target CPU to build against. Valid values are `x86` or `x64`. If non-valid values are supplied, then the default is used.
 
-   `version=[semver]`
+### Request body data
 
-   `arch=[cpu]`
-
-   `platform=[os]`
-
-* **Data Params**
-
-Should send a application/tar+gzip (.tgz) file directly as data, not as a multipart upload.
-This archive should include a package/ prefix for all the source like `npm pack` does.
-
-* **Success Response:**
-
-  * **Code:** 200 <br />
-    **Content:**
-
-    ```
-      { event: 'npm:spawn', env: {} }
-      { event: 'npm:stdout', data: 'npm successful' }
-    ```
-
-* **Error Response:**
-
-
-  * **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `{ error : "Log in" }`
-
-  OR
-
-  * **Code:** 422 UNPROCESSABLE ENTRY <br />
-    **Content:** `{ error : "Unable to unzip archive" }`
-
-  OR
-
-  * **Code:** 500 SERVER ERROR <br />
-    **Content:** `{ error : "ECONNREFUSED" }`
-
-
-* **Sample Call:**
-
-  ```
-  curl --data-binary @to-build.tgz module-foundry/build -o built.tgz
-  ```
-
-* **Notes:**
-
-The build will be placed in a build/ prefix, inside of the build/ prefix a couple of log related files will be present, the actual module will be placed in build/module/
+Should send a application/tar+gzip (.tgz) file directly as data, not as a multipart upload. This archive should include a package/ prefix for all the source like `npm pack` does. The build will be placed in a build/ prefix, inside of the build/ prefix a couple of log related files will be present, the actual module will be placed in build/module/
 
 <hr>
 
@@ -242,6 +202,13 @@ Fine tuning your build process is important. With `module-foundry` there are a n
 * HTTP(S) interfaces and ports.
 * Default environment variables to pass to `npm`.
 * And more!
+
+There are a number of sample configuration files:
+
+* [config.sample.json](config/config.sample.json)
+* [config.pkgcloud.json](config/config.pkgcloud.json)
+* [config.localfiles.json](config/config.localfiles.json)
+* [config.windows.json](config/config.windows.json)
 
 Here's a full list of all available configuration options.
 
@@ -259,14 +226,23 @@ Here's a full list of all available configuration options.
 * `defaults`: Group of default options
 * `defaults.env`: Default environment variables to set on the running npm process.
 * `defaults.expand`: Default environment variables to _append_ to the running `module-foundry` process' environment variable value(s).
-* `defaults.build.version`: The Node version to suggest when determining which version to use for the build process
+* `defaults.build.engines.node`: The `node` version to suggest when determining which version to use for the build process
 
-#### Authorization
+#### HTTP(S) & Authorization
 
+**Authorization**
 * `unauthorized`: Group of options related to when authorization fails
 * `unauthorized.ok`: Allow all privilege requests to succede
 * `authorization`: Groups of properties related to authorization
 * `authorization.header`: What the authorization header from http requests must match exactly.
+
+**HTTP**
+* `http.address`: IP address to bind the HTTP server to. _(Defaults to `::1`)_
+* `http.port`: Port to listen on. _(Defaults to 80)_
+
+**HTTPS**
+* `https.address`: IP address to bind the HTTPS server to. _(Defaults to `::1`)_
+* `https.port`: Port for the HTTPS server to listen on. _(Defaults to 443)_
 
 #### Platform & Architecture
 
@@ -282,16 +258,6 @@ An architecture is any valid value from this set: `x86`, or `x64`.
 
 * `arch.{{arch}}.env`: Sets these environment variables on the `npm` process on the specified architecture.
 * `arch.{{arch}}.expand`: Appends these environment variables to the running `module-foundry` process' environment variable value(s) on the specified architecture.
-
-#### HTTP(S)
-
-**HTTP**
-* `http.address`: IP address to bind the HTTP server to. _(Defaults to `::1`)_
-* `http.port`: Port to listen on. _(Defaults to 80)_
-
-**HTTPS**
-* `https.address`: IP address to bind the HTTPS server to. _(Defaults to `::1`)_
-* `https.port`: Port for the HTTPS server to listen on. _(Defaults to 443)_
 
 <hr>
 
@@ -319,7 +285,7 @@ These probes are emitted _in this order._
 1. `build.configure (err, JobDescription)`: When you want to edit the overall configuration of a build. The `repository` property matches the options used by [`checkout`][checkout].
 2. `npm.configure (err, JobDescription)`: When you want to edit the options when spawning `npm`.
 3. `npm.package (err, JobDescription, package)`: When you want to modify something in the `package.json` that will be rewritten to disk. This is very useful for modifying absolute paths in `.scripts`
-4. `npm.spawned` (JobDescription, builderProcess)`: For hooking up directly to `npm` output.
+4. `npm.spawned (JobDescription, builderProcess)`: For hooking up directly to `npm` output.
 4. `build.output (err, JobDescription, stream)`: Full build output. Use the `stream` to pipe to additional targets.
 
 <hr>
