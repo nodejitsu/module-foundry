@@ -293,3 +293,7 @@ These probes are emitted _in this order._
 #### License: MIT
 
 _Factory Icon by Lil Squid from The Noun Project_
+
+[npm]: https://npmjs.org
+[nodejitsu]: https://nodejitsu.com
+[smartos]: http://smartos.org
