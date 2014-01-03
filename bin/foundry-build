@@ -34,6 +34,11 @@ var optimist = require('optimist')
       string: true,
       demand: true
     },
+    remote: {
+      description: 'Remote file location to upload to',
+      alias: 'r',
+      string: true
+    },
     file: {
       description: 'Path to local tarball to receive',
       alias: 'f',
@@ -101,6 +106,10 @@ if (argv.input) {
 
 if (argv.file) {
   query.stream = true;
+}
+
+if (argv.remote) {
+  pkg.filename = argv.remote;
 }
 
 console.log('Requesting: ' + url);
