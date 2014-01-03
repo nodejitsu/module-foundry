@@ -298,3 +298,4 @@ _Factory Icon by Lil Squid from The Noun Project_
 [npm]: https://npmjs.org
 [nodejitsu]: https://nodejitsu.com
 [smartos]: http://smartos.org
+[understudy]: https://github.com/bmeck/understudy
