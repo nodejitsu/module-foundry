@@ -6,7 +6,13 @@
   "versions": ["0.8.25", "0.8.6", "0.8.7", "0.6.20", "0.6.19"],
   "unauthorized": { "ok": true },
   "plugins": {
-    "cloudfiles": {}
+    "pkgcloud": {
+      "provider": "rackepace",
+      "container": "node_modules",
+      "region": "ord",
+      "username": "x",
+      "apiKey": "x"
+    }
   },
   "directories": { "tmp": "/tmp" },
   "defaults": {
@@ -14,12 +20,6 @@
       "npm_config_production": "true",
       "NODE_ENV": "production",
       "npm_config_registry": "http://registry.npmjs.org"
-    }
-  },
-  "rackspace": {
-    "cloudfiles": {
-      "username": "x",
-      "apiKey": "x"
     }
   }
 }
