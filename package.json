@@ -22,7 +22,7 @@
   "dependencies": {
     "async": "~0.2.9",
     "buffered": "~0.0.1",
-    "director": "~1.2.0",
+    "director": "~1.1.0",
     "flatiron": "~0.3.8",
     "merge-recursive": "0.0.3",
     "module-smith": "~0.2.0",
