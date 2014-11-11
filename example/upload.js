@@ -1,7 +1,7 @@
 /*
  * upload.js: Example of using `module-foundry` to upload after a build.
  *
- * (C) 2012 Nodejitsu Inc.
+ * (C) 2012 Charlie Robbins, Bradley Meck, and the Contributors
  *
  */
 
@@ -22,7 +22,7 @@ request({
     })
   }
 }, function (err, res, body) {
-  return err 
+  return err
     ? console.error('Error building module: ' + err.message)
     : console.log('Build completed: ' + body);
 });

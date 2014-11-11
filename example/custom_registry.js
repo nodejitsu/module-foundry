@@ -1,7 +1,7 @@
 /*
  * custom_registry.js: Example of using `module-foundry` with custom npm registry
  *
- * (C) 2012 Nodejitsu Inc.
+ * (C) 2012 Charlie Robbins, Bradley Meck, and the Contributors
  *
  */
 

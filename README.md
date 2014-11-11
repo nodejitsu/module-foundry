@@ -289,7 +289,7 @@ These probes are emitted _in this order._
 4. `build.output (err, JobDescription, stream)`: Full build output. Use the `stream` to pipe to additional targets.
 
 <hr>
-#### Copyright (C) 2012 Nodejitsu Inc.
+#### Copyright (C) 2012 Charlie Robbins, Bradley Meck, and the Contributors
 #### Contributors: [Bradley Meck](https://github.com/bmeck), [Charlie Robbins](https://github.com/indexzero)
 #### License: MIT
 

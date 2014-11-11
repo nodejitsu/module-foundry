@@ -14,10 +14,9 @@
     "foundry-build": "bin/foundry-build",
     "module-foundry": "bin/module-foundry"
   },
-  "author": "Nodejitsu Inc <info@nodejitsu.com>",
+  "author": "Bradley Meck <bradley.meck@gmail.com>",
   "contributors": [
-    { "name": "Charlie Robbins", "email": "charlie@nodejitsu.com" },
-    { "name": "Bradley Meck", "email": "bradley.meck@gmail.com" }
+    { "name": "Charlie Robbins", "email": "charlie@nodejitsu.com" }
   ],
   "dependencies": {
     "async": "~0.2.9",
